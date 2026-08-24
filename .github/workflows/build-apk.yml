@@ -18,7 +18,12 @@ jobs:
 
       - name: Unpack Android project
         run: unzip -q SCI-FI-SOUNDBOARD-STUDIO-source.zip
-
+        
+      - name: Enable AndroidX
+        run: |
+          echo "android.useAndroidX=true" > SCI-FI-SOUNDBOARD-STUDIO/gradle.properties
+          echo "android.enableJetifier=true" >> SCI-FI-SOUNDBOARD-STUDIO/gradle.properties
+          
       - name: Download Gradle
         run: |
           curl -L --retry 3 -o gradle.zip https://services.gradle.org/distributions/gradle-8.7-bin.zip
